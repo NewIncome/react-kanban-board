@@ -1,6 +1,6 @@
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
-import styled from "styled-component"
+import styled from "styled-components"
 
 const Container = styled.div`
     background-color: #f4f5f7;
@@ -39,14 +39,16 @@ export default function Column({title, tasks, id}) {
         {title}
       </Title>
 
-      <Droppable droppableId={id}>  {/* Needed attribute for droppable */}
+      <Droppable
+        key={id}    //Important attribute for droppable!!
+        droppableId={id}
+      >
         {/* Callback function */}
         {(provided, snapshot) => {
           <TaskList
             ref={provided.innerRef}
             {...provided.droppableProps}
-            isDraggingOver={snapshot.isDraggingOver}
-            /* Objects from Draggable that provide information about dragged objects */
+            isDraggingOver={snapshot.isDraggingOver}  /* Objects from Draggable that provide information about dragged objects */
           >
             {/* Provide your tasks */}
             
