@@ -94,14 +94,69 @@ function App() {
     setDraggedItem(null); //reset the state of draggedItem
   }
 
+  //<-5-> Create the UI. Create the column styles
+  const columnStyles = {
+    todo: {
+      header: "bg-gradient-to-r from-blue-600 to-blue-400",
+      border: "border-blue-400",
+    },
+    inProgress: {
+      header: "bg-gradient-to-r from-yellow-600 to-yellow-400",
+      border: "border-yellow-400",
+    },
+    done: {
+      header: "bg-gradient-to-r from-green-600 to-green-400",
+      border: "border-green-400",
+    }
+  }
+
 
   return (
     <>
-      <div className="App">
-        Project starts here!
+      <div className="p-6 w-full min-h-screen bg-gradient-to-b
+        from-zinc-900 to-zinc-800 flex items-center justify-center">
 
-          (^_^)
+        {/* Container for the KanbanBoard */}
+        <div className="flex items-center justify-center flex-col
+          gap-4 w-full mas-w-6xl">
+          <h1 className="text-6xl font-bold mb-8 text-transparent
+          bg-clip-text bg-gradient-to-r from-yellow-400
+          via-amber-500 to-rose-400">React Kanban Board</h1>
 
+          {/* Container for Input section */}
+          <div className="mb-8 flex w-full max-w-lg shadow-lg
+            rounded-lg overflow-hidden">
+            <input
+              type="text"
+              value={newTask}
+              onChange={e => setNewTask(e.target.value)}
+              placeholder="Add a new task..."
+              className="flex-grow p-3 bg-zinc-700 text-white"
+              onKeyDown={e => e.key === "Enter" && addNewTask()} //personalFunc: add new task if hit 'Enter' on keyboard
+            />
+
+            <select
+              value={activeColumns}
+              onChange={e => setActiveColumns(e.target.value)}
+              className="p-3 gb-zinc-700 text-white border-0 border-l
+              border-zinc-600"
+            >
+              {Object.keys(columns).map(columnId => (
+                <option value={columnId} key={columnId}>
+                  {columns[columnId].name}
+                </option>
+              ))}
+            </select>
+
+            <button
+              onClick={addNewTask}
+              className="px-6 bg-gradient-to-r from-yellow-600 to-amber-500
+                text-white font-medium hover:from-yellow-500 to-amber-400
+                transition-all duration-200 cursor-pointer"
+            >Add</button>
+          </div>
+
+        </div>
       </div>
     </>
   )
