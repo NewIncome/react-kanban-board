@@ -12,18 +12,18 @@ function App() {
       ]
     },
     inProgress: {
-      name: "To Do",
+      name: "In Progress",
       items: [
         {id: "3", content: "Design UI mockups"}
       ]
     },
     done: {
-      name: "To Do",
+      name: "Done",
       items: [
         {id: "4", content: "Set up repository"}
       ]
     }
-  })
+  });
   //<-2-> create the rest of the state variables (3 (drag&drop, delete, add))
   //to keep track of new created tasks
   const [newTask, setNewTask] = useState("");
@@ -95,6 +95,7 @@ function App() {
   }
 
   //<-5-> Create the UI. Create the column styles
+  /* to switch for each box when you move the task between boxes */
   const columnStyles = {
     todo: {
       header: "bg-gradient-to-r from-blue-600 to-blue-400",
@@ -108,7 +109,7 @@ function App() {
       header: "bg-gradient-to-r from-green-600 to-green-400",
       border: "border-green-400",
     }
-  }
+  };
 
 
   return (
@@ -154,6 +155,67 @@ function App() {
                 text-white font-medium hover:from-yellow-500 to-amber-400
                 transition-all duration-200 cursor-pointer"
             >Add</button>
+          </div>
+          
+          <div className="flex gap-6 overflow-x-auto pb-6 w-full">
+            
+            {/* to map-create the Columns */}
+            {Object.keys(columns).map(columnId => (
+              <div
+                key={columnId}
+                className={`flex-shrink-0 w-80 bg-zinc-800 rounded-lg
+                  shadow-xl border-t-4 ${columnStyles[columnId].border}`}//for Dynamic Styling
+                onDragOver={e => handleDragOver(e, columnId)}
+                onDrop={e => handleDrop(e, columnId)}
+              >
+                {/* div for the COLumnHeader */}
+                <div
+                  className={`p-4 text-white font-bold text-xl
+                    rounded-t-m ${columnStyles[columnId].header}`}
+                >
+                  {columns[columnId].name}
+                  <span className="ml-2 px-2 py-1 bg-zinc-800
+                  bg-opacity-30 rounded-full text-sm">
+                    {columns[columnId].items.length}
+                  </span>
+
+                  {/* Container to display the Tasks */}
+                  <div className="p-3 min-h-64">
+
+                    {columns[columnId].items.length === 0 ? (
+                      /* div for empty-col/no-tasks */
+                      <div className="text-center py-10 text-zinc-500
+                        italic text-sm">Drop tasks here</div>
+                    ) : (
+                      /* to map-create the Tasks */
+                      columns[columnId].items.map(item => (
+                        <div
+                          key={item.id}
+                          className="p-4 mb-3 bg-zinc-700 text-white
+                            rounded-lg shadow-md cursor-move flex items-center
+                            justify-between transform trasnsition-all duration-200
+                            hover:scale-105 hover:shadow-lg"
+                          draggable
+                          onDragStart={() => handleDragStart(columnId, item)}
+                        >
+                          <span className="mr-2">{item.content}</span>
+                          <button
+                            onClick={() => removeTask(columnId, item.id)}
+                            className="text-zinc-400 hover:text-red-400
+                              transition-colors duration-200 w-6 h-6 flex
+                              items-center justify-center rounded-full
+                              hover:bg-zinc-600"
+                          >
+                            <span className="text-lg cursor-pointer">x</span>
+                          </button>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
