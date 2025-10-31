@@ -65,7 +65,7 @@ function App() {
 
   //<-4-> create Functions. second Drag&Drop functionality (3 funcs: handleDragStart, handleDragOver, handleDrop)
   //to keep track of which item is being dragged
-  const handleDragStart = (columnId, taskId) => {
+  const handleDragStart = (columnId, item) => {
     setDraggedItem({columnId, item});
   }
   const handleDragOver = (e) => {
@@ -119,7 +119,7 @@ function App() {
 
         {/* Container for the KanbanBoard */}
         <div className="flex items-center justify-center flex-col
-          gap-4 w-full mas-w-6xl">
+          gap-4 w-full max-w-6xl">
           <h1 className="text-6xl font-bold mb-8 text-transparent
           bg-clip-text bg-gradient-to-r from-yellow-400
           via-amber-500 to-rose-400">React Kanban Board</h1>
@@ -139,7 +139,7 @@ function App() {
             <select
               value={activeColumns}
               onChange={e => setActiveColumns(e.target.value)}
-              className="p-3 gb-zinc-700 text-white border-0 border-l
+              className="p-3 bg-zinc-700 text-white border-0 border-l
               border-zinc-600"
             >
               {Object.keys(columns).map(columnId => (
@@ -152,8 +152,8 @@ function App() {
             <button
               onClick={addNewTask}
               className="px-6 bg-gradient-to-r from-yellow-600 to-amber-500
-                text-white font-medium hover:from-yellow-500 to-amber-400
-                transition-all duration-200 cursor-pointer"
+                text-white font-medium hover:from-yellow-500 hover:to-amber-500
+                transition-all duration-200 cursor-pointer !rounded-l-none"
             >Add</button>
           </div>
           
