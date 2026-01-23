@@ -1,3 +1,6 @@
+import { convertName } from '../util';
+
+
 function InputNew({newTask, setNewTask, addNewTask, columns, activeColumns, setActiveColumns}) {
   return (
     <div className="mb-8 flex w-full max-w-lg shadow-lg
@@ -17,9 +20,9 @@ function InputNew({newTask, setNewTask, addNewTask, columns, activeColumns, setA
               className="p-3 bg-zinc-700 text-white border-0 border-l
               border-zinc-600"
             >
-              {Object.keys(columns).map(columnId => (
-                <option value={columnId} key={columnId}>
-                  {columns[columnId].name}
+              {columns.map(colName => (
+                <option value={colName} key={colName}>
+                  {convertName(colName)}
                 </option>
               ))}
             </select>
