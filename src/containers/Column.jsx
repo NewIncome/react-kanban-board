@@ -29,10 +29,6 @@ function Column({
   };
 
   const columnItems = tasks.filter(e => e.column === columnName);
-
-  console.log("Inside Column");
-  console.log(columnName);
-  console.log(tasks);
   
 
   return (
