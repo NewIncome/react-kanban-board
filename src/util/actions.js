@@ -20,9 +20,16 @@ async function createTask(task) {
 
 async function deleteTask(taskId) {  
   const response = await axios.delete(`/tasks/${taskId}`).catch(err => {
-        console.error(' --- Error creating task: ' + err);
+        console.error(' --- Error deleting task: ' + err);
       });
   return response.data;
 }
 
-export { getTasks, createTask, deleteTask };
+async function updateTask(taskId, data) {
+  const response = await axios.patch(`/tasks/${taskId}`, data).catch(err => {
+    console.error(' --- Error updating task: ' + err);
+  });
+  return response.data;
+}
+
+export { getTasks, createTask, deleteTask, updateTask };

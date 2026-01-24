@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Column from './Column';
 import InputNew from '../components/InputNew';
-import { createTask, deleteTask } from '../util/actions';
+import { createTask, deleteTask, updateTask } from '../util/actions';
 
 
 function Board({
@@ -69,6 +69,22 @@ function Board({
     
     if(sourceColumnName === columnName) return;  //to not get a duplicate task if you drag&drop it in the same box
 
+    /* //Logic for dropping the item in a different box: means modifying the column value of the Task
+    var updatedTasks = [...tasks];
+    updatedTasks = updatedTasks.filter(i => i.id !== item.id);
+
+    item.column = columnName;
+    updatedTasks.push(item);
+
+    setTasks(updatedTasks); //update the columns */
+    moveTask(item, columnName);
+
+    callUpdateTask(item.id, {content: item.content, column: columnName});
+
+    setDraggedItem(null); //reset the state of draggedItem
+  }
+
+  const moveTask = (item, columnName) => {
     //Logic for dropping the item in a different box: means modifying the column value of the Task
     var updatedTasks = [...tasks];
     updatedTasks = updatedTasks.filter(i => i.id !== item.id);
@@ -77,7 +93,21 @@ function Board({
     updatedTasks.push(item);
 
     setTasks(updatedTasks); //update the columns
-    setDraggedItem(null); //reset the state of draggedItem
+  }
+
+  async function callUpdateTask(id, data) {
+    console.log(' - Inside callUpdateTask - data:');
+    console.log(data);
+    console.log(data.column);
+
+    try {
+      await updateTask(id, {id: null, content: (data.content || ""), column: (data.column || "")});
+    } catch(err) {
+      console.log(' --- Failed updateTask() --- ');
+      console.log(err);
+      
+      loadTasks(); // rollback
+    }
   }
 
 

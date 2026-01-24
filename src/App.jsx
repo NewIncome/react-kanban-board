@@ -5,7 +5,7 @@ import { getTasks } from './util/actions';
 
 
 function App() {
-  const [tasks, setTasks] = useState([{id: "1", content: "Market Research Test Task", column:"TO_DO"}]);
+  const [tasks, setTasks] = useState([{id: "1", content: "Test Task.  Please delete me", column:"TO_DO"}]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [draggedItem, setDraggedItem] = useState(null);  //to keep track of which task is currently being dragged over
