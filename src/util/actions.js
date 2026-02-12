@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 //const LINK = 'https://react-kanban-board.jalfred.dev/api/tasks';
-axios.defaults.baseURL = 'http://localhost:8080/api';
+//axios.defaults.baseURL = 'http://localhost:8080/api';  //for dev
+axios.defaults.baseURL = 'https://kanban-board-api-a583.onrender.com/api';
 axios.default.timeout = 5000;
 
 async function getTasks() {  
