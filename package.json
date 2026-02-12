@@ -1,5 +1,5 @@
 {
-  "homepage": "http://jalfred.dev/react-kanban-board/",
+  "homepage": "https://react-kanban-board.jalfred.dev/",
   "name": "react-kanban-board",
   "private": true,
   "version": "0.0.0",
@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
-    "axios": "^1.13.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwindcss": "^4.1.16"
