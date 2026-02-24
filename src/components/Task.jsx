@@ -2,7 +2,9 @@ function Task({
   columnName,
   task,
   handleDragStart,
-  removeTask
+  removeTask,
+  handleTouchStart,
+  handleTouchEnd
 }) {
 
   return (
@@ -14,6 +16,8 @@ function Task({
         hover:scale-105 hover:shadow-lg"
       draggable
       onDragStart={() => handleDragStart(columnName, task)}
+      onTouchStart={(e) => handleTouchStart(columnName, task, e)}
+      onTouchEnd={(e) => handleTouchEnd(e)}
     >
       <span className="mr-2">{task.content}</span>
       <button

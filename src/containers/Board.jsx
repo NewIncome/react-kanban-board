@@ -110,6 +110,32 @@ function Board({
     }
   }
 
+  // *** Handle touch controls ***
+  const handleTouchStart = (columnName, item, e) => {
+    setDraggedItem({ columnName, item });
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!draggedItem) return;
+
+    const touch = e.changedTouches[0];
+    const element = document.elementFromPoint(
+      touch.clientX,
+      touch.clientY
+    );
+
+    if (!element) return;
+
+    const columnElement = element.closest("[data-column]");
+    if (!columnElement) return;
+
+    const targetColumn = columnElement.dataset.column;
+
+    if (targetColumn) {
+      handleDrop(e, targetColumn);
+    }
+  };
+
 
   return (
     <>
@@ -144,6 +170,8 @@ function Board({
                 handleDragOver={handleDragOver}
                 handleDrop={handleDrop}
                 removeTask={removeTask}
+                handleTouchStart={handleTouchStart}
+                handleTouchEnd={handleTouchEnd}
               />
 
             ))}

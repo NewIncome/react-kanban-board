@@ -8,7 +8,9 @@ function Column({
   handleDragStart,
   handleDragOver,
   handleDrop,
-  removeTask
+  removeTask,
+  handleTouchStart,
+  handleTouchEnd
 }) {
 
   //<-5-> Create the UI. Create the column styles
@@ -40,6 +42,7 @@ function Column({
                   rounded-lg shadow-xl border-t-4 ${columnStyles[columnName].border}`}
       onDragOver={e => handleDragOver(e, columnName)}
       onDrop={e => handleDrop(e, columnName)}
+      data-column={columnName}
     >
       {/* div for the COLumnHeader */}
       <div
@@ -68,6 +71,8 @@ function Column({
                 task={task}
                 handleDragStart={handleDragStart}
                 removeTask={removeTask}
+                handleTouchStart={handleTouchStart}
+                handleTouchEnd={handleTouchEnd}
               />
             
             ))
