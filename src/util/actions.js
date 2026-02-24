@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'https://kanban-board-api-a583.onrender.com/api';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.default.timeout = 5000;
 
 async function getTasks() {  
