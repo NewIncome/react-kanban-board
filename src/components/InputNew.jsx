@@ -1,4 +1,7 @@
-function InputNew({newTask, setNewTask, addNewTask, columns, activeColumns, setActiveColumns}) {
+import { convertName } from '../util';
+
+
+function InputNew({newTask, setNewTask, addNewTask, columns, selectedColumn, setSelectedColumn}) {
   return (
     <div className="mb-8 flex w-full max-w-lg shadow-lg
             rounded-lg overflow-hidden">
@@ -12,14 +15,14 @@ function InputNew({newTask, setNewTask, addNewTask, columns, activeColumns, setA
             />
 
             <select
-              value={activeColumns}
-              onChange={e => setActiveColumns(e.target.value)}
+              value={selectedColumn}
+              onChange={e => setSelectedColumn(e.target.value)}
               className="p-3 bg-zinc-700 text-white border-0 border-l
               border-zinc-600"
             >
-              {Object.keys(columns).map(columnId => (
-                <option value={columnId} key={columnId}>
-                  {columns[columnId].name}
+              {columns.map(colName => (
+                <option value={colName} key={colName}>
+                  {convertName(colName)}
                 </option>
               ))}
             </select>
