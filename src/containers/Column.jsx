@@ -34,8 +34,10 @@ function Column({
   return (
     <div
       key={columnName}
-      className={`Column flex-shrink-0 w-80 bg-zinc-800 rounded-lg
-        shadow-xl border-t-4 ${columnStyles[columnName].border}`}//for Dynamic Styling
+      /* //===---prev styles---=== className={`Column flex-shrink-0 w-80 bg-zinc-800 rounded-lg
+        shadow-xl border-t-4 ${columnStyles[columnName].border}`}//for Dynamic Styling */
+      className={`Column w-full sm:w-full lg:w-80 flex-shrink-0 bg-zinc-800
+                  rounded-lg shadow-xl border-t-4 ${columnStyles[columnName].border}`}
       onDragOver={e => handleDragOver(e, columnName)}
       onDrop={e => handleDrop(e, columnName)}
     >
