@@ -14,6 +14,9 @@ function Board({
 }) {
   const columns = ['TO_DO','IN_PROGRESS','DONE'];
 
+  const [dragPosition, setDragPosition] = useState(null);
+
+
   console.log(' --- At beginning of Board, log tasks: ');
   console.log(tasks);
 
@@ -136,6 +139,18 @@ function Board({
     }
   };
 
+  // Add visual drag
+  const handleTouchMove = (e) => {
+    if (!draggedItem) return;
+
+    const touch = e.touches[0];
+
+    setDragPosition({
+      x: touch.clientX,
+      y: touch.clientY
+    });
+  };
+
 
   return (
     <>
@@ -172,6 +187,8 @@ function Board({
                 removeTask={removeTask}
                 handleTouchStart={handleTouchStart}
                 handleTouchEnd={handleTouchEnd}
+                handleTouchMove={handleTouchMove}
+                draggedItem={draggedItem}
               />
 
             ))}
@@ -179,6 +196,19 @@ function Board({
 
         </div>
       </div>
+
+      {draggedItem && dragPosition && (
+        <div
+          className="fixed pointer-events-none z-50 bg-zinc-700 p-3 rounded shadow-xl"
+          style={{
+            top: dragPosition.y - 20,
+            left: dragPosition.x - 50,
+          }}
+        >
+          {draggedItem.item.content}
+        </div>
+      )}
+
     </>
   )
 }

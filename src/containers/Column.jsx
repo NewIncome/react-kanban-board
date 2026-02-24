@@ -10,7 +10,9 @@ function Column({
   handleDrop,
   removeTask,
   handleTouchStart,
-  handleTouchEnd
+  handleTouchEnd,
+  handleTouchMove,
+  draggedItem
 }) {
 
   //<-5-> Create the UI. Create the column styles
@@ -73,6 +75,8 @@ function Column({
                 removeTask={removeTask}
                 handleTouchStart={handleTouchStart}
                 handleTouchEnd={handleTouchEnd}
+                handleTouchMove={handleTouchMove}
+                draggedItem={draggedItem}
               />
             
             ))

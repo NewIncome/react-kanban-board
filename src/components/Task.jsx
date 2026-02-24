@@ -4,19 +4,23 @@ function Task({
   handleDragStart,
   removeTask,
   handleTouchStart,
-  handleTouchEnd
+  handleTouchMove,
+  handleTouchEnd,
+  draggedItem
 }) {
 
   return (
     <div
       key={task.id}
-      className="p-4 mb-3 bg-zinc-700 text-white
+      className={`p-4 mb-3 bg-zinc-700 text-white
         rounded-lg shadow-md cursor-move flex items-center
         justify-between transform trasnsition-all duration-200
-        hover:scale-105 hover:shadow-lg"
+        hover:scale-105 hover:shadow-lg
+        ${draggedItem?.item.id === task.id ? "opacity-30" : ""}`}
       draggable
       onDragStart={() => handleDragStart(columnName, task)}
       onTouchStart={(e) => handleTouchStart(columnName, task, e)}
+      onTouchMove={handleTouchMove}
       onTouchEnd={(e) => handleTouchEnd(e)}
     >
       <span className="mr-2">{task.content}</span>
