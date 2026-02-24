@@ -154,7 +154,7 @@ function Board({
 
   return (
     <>
-      <div className="p-6 md:w-full w-10/12 min-h-screen bg-gradient-to-b
+      <div className="p-6 w-full min-h-screen bg-gradient-to-b
         from-zinc-900 to-zinc-800 flex items-center justify-center">
 
         {/* Container for the KanbanBoard */}
