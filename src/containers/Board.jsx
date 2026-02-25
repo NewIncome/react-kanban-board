@@ -10,7 +10,8 @@ function Board({
   loadTasks,
   error,
   draggedItem,
-  setDraggedItem
+  setDraggedItem,
+  loading
 }) {
   const columns = ['TO_DO','IN_PROGRESS','DONE'];
 
@@ -151,9 +152,19 @@ function Board({
     });
   };
 
-
+  
   return (
     <>
+      {loading && (
+        
+        <div className="Loading relative top-20 left-20 flex space-x-1">
+          <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce [animation-delay:-0.3s]" />
+          <div className="w-2 h-2 bg-gray-200 rounded-full animate-bounce [animation-delay:-0.15s]" />
+          <div className="w-2 h-2 bg-gray-100 rounded-full animate-bounce" />
+        </div>
+        
+      )}
+
       <div className="p-6 w-full min-h-screen bg-gradient-to-b
         from-zinc-900 to-zinc-800 flex items-center justify-center">
 

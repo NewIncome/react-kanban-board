@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import Board from "./containers/Board";
-import { getTasks } from './util/actions';
+import { getTasks, setupInterceptors } from './util/actions';
 
 
 function App() {
   const [tasks, setTasks] = useState([{id: "1", content: "Test Task.  Please delete me", column:"TO_DO"}]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [draggedItem, setDraggedItem] = useState(null);  //to keep track of which task is currently being dragged over
   
@@ -29,6 +29,13 @@ function App() {
     }
   }
 
+  // Interceptors for Loader
+  useEffect(() => {
+    const loadingChecker = setupInterceptors(setLoading);
+
+    return loadingChecker;
+  }, []);
+
 
   return (
     <Board
@@ -38,6 +45,7 @@ function App() {
       error={error}
       draggedItem={draggedItem}
       setDraggedItem={setDraggedItem}
+      loading={loading}
     />
   );
 }
