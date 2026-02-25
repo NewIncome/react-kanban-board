@@ -162,7 +162,7 @@ function Board({
           gap-4 w-full max-w-6xl mb-4">
           <h1 className="text-6xl font-bold mb-8 text-transparent
           bg-clip-text bg-gradient-to-r from-yellow-400
-          via-amber-500 to-rose-400">React Kanban Board</h1>
+          via-amber-500 to-rose-400">To Do Board</h1>
 
           <InputNew
             newTask={newTask}
