@@ -70,19 +70,9 @@ function Board({
     if(!draggedItem) return;  //Base Case: no draggedElem return nothing
 
     const {column: sourceColumnName, item} = draggedItem;  //extract the information of the draggedElement (like: original column, id)
-    
     if(sourceColumnName === columnName) return;  //to not get a duplicate task if you drag&drop it in the same box
 
-    /* //Logic for dropping the item in a different box: means modifying the column value of the Task
-    var updatedTasks = [...tasks];
-    updatedTasks = updatedTasks.filter(i => i.id !== item.id);
-
-    item.column = columnName;
-    updatedTasks.push(item);
-
-    setTasks(updatedTasks); //update the columns */
     moveTask(item, columnName);
-
     callUpdateTask(item.id, {content: item.content, column: columnName});
 
     setDraggedItem(null); //reset the state of draggedItem
@@ -103,6 +93,11 @@ function Board({
     console.log(' - Inside callUpdateTask - data:');
     console.log(data);
     console.log(data.column);
+    // snippet to avoid glitch like view in loading icon
+    let timeoutId;
+    timeoutId = setTimeout(() => {
+      setLoading(true);
+    }, 600); // delayed spinner
 
     try {
       await updateTask(id, {id: null, content: (data.content || ""), column: (data.column || "")});
@@ -111,6 +106,9 @@ function Board({
       console.log(err);
       
       loadTasks(); // rollback
+    } finally {
+      clearTimeout(timeoutId);
+      setLoading(false);
     }
   }
 
@@ -152,7 +150,7 @@ function Board({
     });
   };
 
-  
+
   return (
     <>
       {loading && (

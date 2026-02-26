@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import Board from "./containers/Board";
-import { getTasks, setupInterceptors } from './util/actions';
+import { getTasks } from './util/actions';
 
 
 function App() {
@@ -28,13 +28,6 @@ function App() {
       setLoading(false);
     }
   }
-
-  // Interceptors for Loader
-  useEffect(() => {
-    const loadingChecker = setupInterceptors(setLoading);
-
-    return loadingChecker;
-  }, []);
 
 
   return (
