@@ -1,64 +1,45 @@
-# React + Vite
+# To Do Board
+This project is a React web app made to show a To Do List Board connected to a Java Back-End API to save a pendings or todo list in a drag&drop kanban style.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-## App UI view
-<img width="1067" height="638" alt="Image" src="https://github.com/user-attachments/assets/8e9673c1-ad4b-4035-8cee-21e531a8b673" />
+<div style="text-align: center;">
+<img src="src/assets/TodoBoard-LG.png" alt="image" style="zoom: 33%;" />
+</div>
 
 
-<!-- -------------------
-►---Elements we need---
-+ Add input element to addNewTask
-  - with selection for list
-+ 3 Boxes(taskList) with memory
-+ Tasks
+## Front-End Links
+- [GitHub Repo](https://github.com/NewIncome/react-kanban-board)
+- [:globe_with_meridians: Live link](https://react-kanban-board.jalfred.dev)
 
-►-StateVariables-
-+ columns
-+ newTask
-+ activeColumns
-+ draggedItem
+## Back-End / API Links
+- [API GitHub Repo](https://github.com/NewIncome/kanban-board-api)
+- [API Live Version](https://kanban-board-api-a583.onrender.com/api)
 
-►-Funcs-
-+ dragAndDrop
-+ deleteTasks
-+ addTasks
+## Built With 
 
----Steps---
-► 1st) we'll create the logic
-  • Create the 3 boxes, being stateVariables to track tasks inside them
+- REACT
+- NPM
+- TAILWIND
 
----Dependencies---
-► Install and Initialize Tailwind
-  • Install
-    $ npm install tailwindcss @tailwindcss/vite
-  • Configure vite.config.js , add 2 lines:
-    + import tailwindcss from '@tailwindcss/vite'
-    + plugins: [ ..., tailwindcss(), ],
-  • Add an @import to your main CSS file , ie.: in App.css add:
-    + @import "tailwindcss";
-------------------- ->
+## Getting Started
 
-<!--
---Coments on learned topics--
+In order to start with this project you need the next:
 
-Added Dependencies
-• react-beautiful-dnd : to facilitate drag and drop functionality
-• ant : ant design to use avatars
-• styled-component : css & js library that allowas to write css code directly
-                     inside react components using js syntax
-  ♦ You can create styled version of html components
--->
+1. Get a copy of this project [this repository :blue_book:](https://github.com/NewIncome/find_your_item/tree/feature/app-w-nodeV12)
+
+Once you have cloned this project
+1. Go to project folder
+2. run `npm install` or `yarn install`
+3. run `npm start`
+
+
+## Improvements
+
+Features pending to add to this app:
+- change data persistence method
+
+## Creators
+Author | Social Media
+:--------------:|:------------:
+👤 | - Github: [@NewIncome](https://github.com/NewIncome)
+**Alfredo C.** | - Twitter: [@J_A_fredo](https://twitter.com/J_A_fredo)
+. | - Linkedin: [Alfredo C.](https://www.linkedin.com/in/j-alfredo-c)
