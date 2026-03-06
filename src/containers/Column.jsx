@@ -37,6 +37,7 @@ function Column({
 
   return (
     <div
+      role="region"
       key={columnName}
       /* //===---prev styles---=== className={`Column flex-shrink-0 w-80 bg-zinc-800 rounded-lg
         shadow-xl border-t-4 ${columnStyles[columnName].border}`}//for Dynamic Styling */
@@ -45,6 +46,7 @@ function Column({
       onDragOver={e => handleDragOver(e, columnName)}
       onDrop={e => handleDrop(e, columnName)}
       data-column={columnName}
+      data-testid={`column-${columnName}`}
     >
       {/* div for the COLumnHeader */}
       <div
@@ -53,7 +55,7 @@ function Column({
       >
         {convertName(columnName)}
         <span className="ml-2 px-2 py-1 bg-zinc-800
-        bg-opacity-30 rounded-full text-sm">
+        bg-opacity-30 rounded-full text-sm" aria-label='Column count'>
           {columnItems.length}
         </span>
       </div>
