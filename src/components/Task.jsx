@@ -25,6 +25,7 @@ function Task({
     >
       <span className="mr-2">{task.content}</span>
       <button
+        aria-label="Delete task"
         onClick={() => removeTask(task.id)}
         className="text-zinc-400 hover:text-red-400
           transition-colors duration-200 w-6 h-6 flex
