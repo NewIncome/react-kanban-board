@@ -22,6 +22,7 @@ function Task({
       onTouchStart={(e) => handleTouchStart(columnName, task, e)}
       onTouchMove={handleTouchMove}
       onTouchEnd={(e) => handleTouchEnd(e)}
+      data-testid={`task-${task.id}`}
     >
       <span className="mr-2">{task.content}</span>
       <button

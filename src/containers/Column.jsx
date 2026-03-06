@@ -46,6 +46,7 @@ function Column({
       onDragOver={e => handleDragOver(e, columnName)}
       onDrop={e => handleDrop(e, columnName)}
       data-column={columnName}
+      data-testid={`column-${columnName}`}
     >
       {/* div for the COLumnHeader */}
       <div
